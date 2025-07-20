@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gynecology & OBGY - Sri Dwarakamayee Hospitals</title>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/dwarakamayihospitallogo.JPG" type="image/jpeg">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN (for dynamic icon loading) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Tailwind Configuration for new colors and animations -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sd-primary': '#00A79D',
+                        'sd-secondary': '#F58220',
+                        'sd-light-bg': '#E0F7F6',
+                        'sd-dark-text': '#34495E',
+                        'sd-light-text': '#6B7280',
+                        'sd-white': '#FFFFFF',
+                    },
+                    keyframes: {
+                        fadeInUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        pulseEffect: { '0%, 100%': { transform: 'scale(1)', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }, '50%': { transform: 'scale(1.02)', boxShadow: '0 8px 12px rgba(0, 0, 0, 0.2)' } },
+                        slideInLeft: { '0%': { opacity: '0', transform: 'translateX(-100%)' }, '100%': { opacity: '1', transform: 'translateX(0)' } },
+                        slideInRight: { '0%': { opacity: '0', transform: 'translateX(100%)' }, '100%': { opacity: '1', transform: 'translateX(0)' } },
+                        scrollLeft: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'pulse-button': 'pulseEffect 2s infinite ease-in-out',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
+                        'slide-in-right': 'slideInRight 0.8s ease-out forwards',
+                        'marquee': 'scrollLeft 30s linear infinite'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-['Inter'] antialiased text-sd-dark-text bg-gray-50" data-current-service="Gynecology & OBGY">
+    <!-- Header Section -->
+    <header class="bg-sd-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="assets/images/dwarakamayihospitallogo.JPG" alt="Sri Dwarakamayee Hospitals Logo" class="h-20 w-auto md:h-24">
+            </a>
+
+            <!-- Navigation - Desktop -->
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="index.html#home" class="text-sd-light-text hover:text-sd-primary text-lg font-medium transition duration-300">Home</a>
+                <a href="about-us.html" class="text-sd-light-text hover:text-sd-primary text-lg font-medium transition duration-300">About Us</a>
+                
+                <!-- Services Dropdown -->
+                <div class="relative group">
+                    <button class="text-sd-light-text hover:text-sd-primary text-lg font-medium transition duration-300 flex items-center focus:outline-none">
+                        Services <i data-lucide="chevron-down" class="ml-1 w-4 h-4 transition-transform duration-300 group-hover:rotate-180"></i>
+                    </button>
+                    <div class="absolute hidden group-hover:block bg-sd-primary shadow-lg rounded-md py-2 z-40 services-dropdown">
+                        <!-- Services will be dynamically loaded here by JavaScript -->
+                    </div>
+                </div>
+
+                <a href="index.html#doctors" class="text-sd-light-text hover:text-sd-primary text-lg font-medium transition duration-300">Doctors</a>
+                <a href="gallery.html" class="text-sd-light-text hover:text-sd-primary text-lg font-medium transition duration-300">Gallery</a>
+                <!-- Book Appointment Button - Desktop -->
+                <a
+                    href="index.html#appointments"
+                    class="inline-flex items-center px-4 py-2 bg-sd-secondary text-sd-white font-bold rounded-full shadow-md hover:bg-orange-600 transition duration-300 animate-pulse-button text-lg"
+                >
+                    Book Appointment <i data-lucide="calendar-days" class="ml-2 w-5 h-5"></i>
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-sd-light-text hover:text-sd-primary focus:outline-none">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="md:hidden bg-sd-primary shadow-lg pb-4 hidden">
+            <nav class="flex flex-col items-center space-y-4 pt-4">
+                <a href="index.html#home" class="mobile-nav-link text-sd-white hover:bg-sd-secondary text-lg font-medium transition duration-300 w-full text-center py-2">Home</a>
+                <a href="about-us.html" class="mobile-nav-link text-sd-white hover:bg-sd-secondary text-lg font-medium transition duration-300 w-full text-center py-2">About Us</a>
+                
+                <!-- Mobile Services Dropdown Toggle -->
+                <button id="mobile-services-dropdown-toggle" class="text-sd-white hover:bg-sd-secondary text-lg font-medium transition duration-300 w-full text-center py-2 flex items-center justify-center">
+                    Services <i data-lucide="chevron-down" class="ml-1 w-4 h-4 transition-transform duration-300 mobile-dropdown-icon"></i>
+                </button>
+                <div id="mobile-services-dropdown" class="hidden">
+                    <!-- Services will be dynamically loaded here by JavaScript -->
+                </div>
+
+                <a href="index.html#doctors" class="mobile-nav-link text-sd-white hover:bg-sd-secondary text-lg font-medium transition duration-300 w-full text-center py-2">Doctors</a>
+                <a href="gallery.html" class="mobile-nav-link text-sd-white hover:bg-sd-secondary text-lg font-medium transition duration-300 w-full text-center py-2">Gallery</a>
+                <!-- Book Appointment Button - Mobile -->
+                <a
+                    href="index.html#appointments"
+                    class="mobile-nav-link inline-flex items-center px-4 py-2 bg-sd-secondary text-sd-white font-bold rounded-full shadow-md hover:bg-orange-600 transition duration-300 w-full justify-center animate-pulse-button text-lg"
+                >
+                    Book Appointment <i data-lucide="calendar-days" class="ml-2 w-5 h-5"></i>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="min-h-screen">
+        <!-- Hero Section for Service Page -->
+        <section class="relative bg-gradient-to-r from-sd-primary to-sd-dark-text text-sd-white py-24 md:py-40 overflow-hidden rounded-b-xl shadow-lg flex items-center justify-center text-center min-h-[300px] md:min-h-[450px]" style="background-image: url('assets/images/gynooo.JPG'); background-size: cover; background-position: center;">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="container mx-auto px-4 relative z-10">
+                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4 animate-fade-in-up" id="service-title-hero">Gynecology & OBGY</h1>
+                <p class="text-lg md:text-xl opacity-90 animate-fade-in-up delay-200" id="service-tagline-hero">Comprehensive women's health, obstetrics, and gynecology services.</p>
+            </div>
+        </section>
+
+        <!-- Service Detail Section -->
+        <section class="py-16 md:py-24 bg-sd-white">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <h2 class="text-3xl md:text-4xl font-bold text-sd-primary mb-8 text-center" id="service-detail-heading">Understanding Our Gynecology & OBGY Department</h2>
+                <div class="prose prose-lg mx-auto text-sd-dark-text">
+                    <p class="text-xl">
+                        Obstetrics and Gynecology, often known as OB-GYN, is a medical field focused on women’s health. Obstetrics deals with pregnancy care, childbirth, and the postpartum period, ensuring the health of both the mother and baby. Gynecology, on the other hand, covers the health of the female reproductive system, including the health of the uterus, ovaries, and breasts. A doctor of Obstetrics and Gynecology will diagnose and treat conditions like menstrual problems, infections, and cancers. OB-GYN doctors are trained to provide comprehensive care for women at all stages of life, from adolescence to menopause and beyond, helping them maintain their reproductive and overall health.
+                    </p>
+                    <p class="text-xl">
+                        If you are looking for the <strong class="text-sd-secondary">best gynecologist in Karimnagar</strong>, please visit <strong id="hospital-name-intro">Sri Dwarakamayee Hospitals</strong>. We offer expert care, advanced facilities, and personalized treatments to ensure your well-being.
+                    </p>
+                    
+                    <h3 class="text-3xl font-semibold text-sd-dark-text mt-8 mb-4">We Specialize in Treatment:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-xl">
+                        <li>
+                            <strong class="text-sd-secondary">Fetal Medicine:</strong> Our fetal medicine treatment is dedicated to the health and well-being of unborn babies. The team of skilled fetal specialists uses advanced diagnostic tools to monitor and manage high-risk pregnancies, identifying potential issues early. We provide personalized care plans to address a wide range of conditions, from genetic disorders to developmental abnormalities, ensuring the best possible outcomes for both mother and baby. Our comprehensive approach integrates the latest technologies with compassionate support, making us a trusted choice for expectant families.
+                        </li>
+                        <li>
+                            <strong class="text-sd-secondary">IVF Treatment:</strong> Sri Dwarakamayee Hospitals' IVF center offers cutting-edge IVF treatment for couples struggling with infertility. Our expert team provides customized infertility treatment solutions using the most advanced reproductive technologies. From initial consultations to the successful completion of IVF cycles, we support you every step of the way. Our focus is on delivering personalized care with a compassionate approach, aiming to achieve the highest success rates and help you build the family you’ve always dreamed of.
+                        </li>
+                    </ul>
+
+                    <h3 class="text-3xl font-semibold text-sd-dark-text mt-8 mb-4">Skills and Expertise:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-xl">
+                        <li>Complicated / High-risk pregnancies and deliveries</li>
+                        <li>Vaginal birth after Caesarean section</li>
+                        <li>Complex and Routine Gynecological problems</li>
+                        <li>Management of Fibroids, Heavy menstrual bleeding/ PCOS/ Endometriosis/ Ovarian cysts etc…</li>
+                        <li>Gynecological surgeries (complex and routine)</li>
+                        <li>Gynecological cancer services</li>
+                        <li>Menopause and osteoporosis care</li>
+                        <li>Screening and management of STIs</li>
+                        <li>Adolescent Gynecology</li>
+                    </ul>
+
+                    <h3 class="text-3xl font-semibold text-sd-dark-text mt-8 mb-4">Other Specialities:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-xl">
+                        <li>Breast Surgery</li>
+                        <li>Cosmetic Gynecology</li>
+                        <li>Mental Health Specialist – Psychiatrist and Psychologist</li>
+                        <li>Interventional Radiology</li>
+                    </ul>
+
+                    <h3 class="text-3xl font-semibold text-sd-dark-text mt-8 mb-4">Why Choose Sri Dwarakamayee Hospitals for Gynecology & OBGY?</h3>
+                    <p class="text-xl">
+                        <strong id="hospital-name-why-choose">Sri Dwarakamayee Hospitals</strong> is a leading Obstetrics and Gynecology Hospital in Karimnagar. It is dedicated to providing individualized and high-quality care for women from reproductive age to menopause and beyond. Our medical teams possess extensive clinical experience and expertise in managing infertility issues, high-risk pregnancies, and complex gynecological cancers. We are equipped with a level 3 Neonatal Intensive Care Unit (NICU) and state-of-the-art infrastructure, ensuring safe and effective care even in complex medical conditions. At our hospital for obstetrics and gynecology in Karimnagar, we focus on delivering personalized care tailored to each patient’s needs. For instance, our team includes some of the best high-risk pregnancy doctors in Karimnagar, ensuring expert care for complex cases.
+                    </p>
+
+                    <h3 class="text-3xl font-semibold text-sd-dark-text mt-8 mb-4">Find the Obstetrics and Gynecology Hospital Near You</h3>
+                    <p class="text-xl">
+                        Looking for an obs and gynae clinic near me or the best gyno hospital near me in Karimnagar? Sri Dwarakamayee Hospitals offers expert care for women at every stage of life—from routine check-ups and pregnancy care to advanced gynecological surgeries. Our experienced obstetricians and gynecologists provide personalized treatment in a safe and comfortable environment. With Sri Dwarakamayee Hospitals, women’s health care is always close to you.
+                    </p>
+
+                    <div class="mt-10 text-center">
+                        <a href="index.html#appointments" class="inline-flex items-center px-8 py-4 bg-sd-secondary text-sd-white font-bold text-lg rounded-full shadow-lg hover:bg-orange-600 transition duration-300 transform hover:scale-105 animate-pulse-button">
+                            Book an Appointment for Gynecology & OBGY <i data-lucide="calendar-days" class="ml-3 w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other Services Section (Now with Scroller) -->
+        <section class="py-16 md:py-24 bg-sd-light-bg">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center text-sd-dark-text mb-12">Explore Our Other Services</h2>
+                <div class="relative">
+                    <div class="flex overflow-x-scroll scrollbar-hide space-x-6 py-4 px-2" id="other-services-grid">
+                        <!-- Other services will be dynamically loaded here by JavaScript -->
+                    </div>
+                    <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-sd-primary p-2 rounded-full text-sd-white hover:bg-teal-700 transition z-20" id="prev-other-service">
+                        <i data-lucide="chevron-left" class="w-8 h-8"></i>
+                    </button>
+                    <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-sd-primary p-2 rounded-full text-sd-white hover:bg-teal-700 transition z-20" id="next-other-service">
+                        <i data-lucide="chevron-right" class="w-8 h-8"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-sd-dark-text text-sd-white py-12 md:py-16">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Contact Info -->
+            <div>
+                <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
+                <p class="mb-2 flex items-center"><i data-lucide="map-pin" class="mr-2 w-5 h-5"></i> H.No: 2-9-106/1, Vasavi Colony, Karimnagar - 505001</p>
+                <p class="mb-2 flex items-center"><i data-lucide="phone" class="mr-2 w-5 h-5"></i> +91 85019 99920</p>
+                <p class="mb-2 flex items-center"><i data-lucide="phone" class="mr-2 w-5 h-5"></i> +91 85019 99940</p>
+                <p class="mb-2 flex items-center"><i data-lucide="phone" class="mr-2 w-5 h-5"></i> +91 85019 99960</p>
+                <p class="mb-2 flex items-center"><i data-lucide="mail" class="mr-2 w-5 h-5"></i> info@sridwarakamayee.com</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="index.html#home" class="hover:text-sd-primary transition duration-300">Home</a></li>
+                    <li><a href="about-us.html" class="hover:text-sd-primary transition duration-300">About Us</a></li>
+                    <li><a href="index.html#services" class="hover:text-sd-primary transition duration-300">Services</a></li>
+                    <li><a href="index.html#doctors" class="hover:text-sd-primary transition duration-300">Doctors</a></li>
+                    <li><a href="gallery.html" class="hover:text-sd-primary transition duration-300">Gallery</a></li>
+                    <li><a href="index.html#appointments" class="hover:text-sd-primary transition duration-300">Book Appointment</a></li>
+                </ul>
+            </div>
+
+            <!-- Social Media & Newsletter (Optional) -->
+            <div>
+                <h3 class="text-2xl font-bold mb-4">Connect With Us</h3>
+                <div class="flex space-x-4 mb-6">
+                    <a href="#" class="text-sd-white hover:text-sd-primary transition duration-300"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                    <a href="#" class="text-sd-white hover:text-sd-primary transition duration-300"><i data-lucide="twitter" class="w-6 h-6"></i></a>
+                    <a href="#" class="text-sd-white hover:text-sd-primary transition duration-300"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                    <a href="#" class="text-sd-white hover:text-sd-primary transition duration-300"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                </div>
+                <p class="text-lg">Stay updated with our latest news and health tips!</p>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-6 text-center text-sm opacity-80">
+            &copy; <span id="current-year-sd"></span> Sri Dwarakamayee Hospitals. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button - FIXED POSITIONING APPLIED -->
+    <a href="https://wa.me/918501999920" target="_blank" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 bg-green-500 rounded-full p-3 shadow-lg hover:scale-110 transition-transform duration-300 z-50 flex items-center justify-center" aria-label="Chat on WhatsApp">
+        <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp" class="w-10 h-10 md:w-12 md:h-12">
+    </a>
+
+    <!-- Custom JavaScript -->
+    <script src="assets/js/script.js"></script>
+    <script>
+        // This script runs on a service page to dynamically populate content
+        document.addEventListener('DOMContentLoaded', () => {
+            const serviceName = document.body.dataset.currentService;
+            if (serviceName) {
+                // Update page title
+                document.title = `${serviceName} - Sri Dwarakamayee Hospitals`;
+
+                // Update hero section
+                const serviceTitleHero = document.getElementById('service-title-hero');
+                if (serviceTitleHero) serviceTitleHero.textContent = serviceName;
+
+                // Update detail section headings/intros
+                const serviceDetailHeading = document.getElementById('service-detail-heading');
+                if (serviceDetailHeading) serviceDetailHeading.textContent = `Understanding Our ${serviceName} Department`;
+                
+                const hospitalNameIntro = document.getElementById('hospital-name-intro');
+                if (hospitalNameIntro) hospitalNameIntro.textContent = 'Sri Dwarakamayee Hospitals';
+
+                const hospitalNameWhyChoose = document.getElementById('hospital-name-why-choose');
+                if (hospitalNameWhyChoose) hospitalNameWhyChoose.textContent = 'Sri Dwarakamayee Hospitals\'';
+
+                // The renderOtherServicesSection() function in sri-dwarakamayee-script.js
+                // will automatically populate the #other-services-grid based on data-current-service
+            }
+        });
+    </script>
+</body>
+</html>

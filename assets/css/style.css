@@ -1,0 +1,628 @@
+/* General Body and Typography */
+body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #34495E; /* sd-dark-text */
+}
+
+/* Hero Section Specific Styles (now a single image) */
+
+
+/* Services Grid Card Styles (used for the new "Centres of Excellence" scroller) */
+.service-card {
+    position: relative;
+    flex-shrink: 0;
+    width: 20rem; /* w-80, adjust as needed for desired card width */
+    min-width: 280px; /* min-w-[280px] */
+    background-color: #FFFFFF; /* bg-sd-white */
+    padding: 1.5rem; /* p-6 */
+    border-radius: 0.75rem; /* rounded-lg */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition-property: all;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* ease-in-out */
+    transform: scale(1); /* initial transform */
+    border-width: 1px;
+    border-color: #F3F4F6; /* border-gray-100 */
+    cursor: pointer; /* Added cursor pointer */
+}
+
+.service-card:hover {
+    transform: translateY(-5px) scale(1.05); /* hover:scale-105 */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05); /* hover:shadow-xl */
+}
+
+.service-card .service-icon {
+    color: #00A79D; /* text-sd-primary */
+}
+
+.service-card:hover .service-icon {
+    color: #F58220; /* text-sd-secondary */
+}
+
+/* Doctor Card Styles */
+.doctor-card {
+    position: relative;
+    flex-shrink: 0;
+    width: 20rem; /* w-80 */
+    background-color: #FFFFFF; /* bg-sd-white */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    overflow: hidden;
+    border-width: 1px;
+    border-color: #F3F4F6; /* border-gray-100 */
+    min-width: 300px; /* Ensure cards don't get too small */
+    height: 380px; /* Fixed height for consistency */
+}
+
+.doctor-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top; /* object-top */
+}
+
+.doctor-content-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to top, #34495E, rgba(52, 73, 94, 0.7), transparent); /* bg-gradient-to-t from-sd-dark-text via-sd-dark-text/70 to-transparent */
+    color: #FFFFFF; /* text-sd-white */
+    padding: 1.5rem; /* p-6 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* justify-end */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.doctor-card:hover .doctor-content-overlay {
+    opacity: 1;
+}
+
+.doctor-content-overlay .specialty {
+    color: #E0F7F6; /* text-sd-light-bg */
+}
+
+/* Scrollbar Hide Utility (for doctors scroller and services scroller) */
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+}
+
+/* Facility Card Styles */
+.facility-card {
+    background-color: #FFFFFF; /* bg-sd-white */
+    padding: 1.5rem; /* p-6 */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition-property: transform, box-shadow;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* ease-in-out */
+    transform: scale(1); /* initial transform */
+    border-width: 1px;
+    border-color: #F3F4F6; /* border-gray-100 */
+}
+
+.facility-card:hover {
+    transform: translateY(-5px) scale(1.05); /* hover:scale-105 */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05); /* hover:shadow-xl */
+}
+
+.facility-card .facility-icon {
+    /* Colors are dynamically set by JS using facility.color, if not, default to primary */
+    color: #00A79D; /* text-sd-primary */
+}
+
+/* Why Choose Us Section Background */
+#why-choose-us {
+    background-image: url('../images/why-choose-us-sd-bg.jpg'); /* Placeholder, replace with actual image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+    position: relative;
+}
+
+#why-choose-us::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 167, 157, 0.8); /* sd-primary with opacity */
+    z-index: 1;
+}
+
+#why-choose-us > .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Health Package Card Styles */
+.package-card {
+    background-color: #FFFFFF; /* bg-sd-white */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    overflow: hidden;
+    border-width: 1px;
+    border-color: #F3F4F6; /* border-gray-100 */
+    display: flex;
+    flex-direction: column;
+    transition-property: transform, box-shadow;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* ease-in-out */
+    transform: scale(1); /* initial transform */
+}
+
+.package-card:hover {
+    transform: translateY(-5px) scale(1.05); /* hover:scale-105 */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); /* hover:shadow-xl */
+}
+
+
+/* Floating WhatsApp Button */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366; /* Standard WhatsApp green */
+    color: #FFF;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 100;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 4px 4px 6px #777;
+}
+
+.whatsapp-float .whatsapp-icon {
+    margin-top: 5px; /* Adjust as needed */
+    width: 40px;
+    height: 40px;
+}
+
+/* Specific styles for dropdowns */
+.services-dropdown {
+    min-width: 300px; /* Increased width for services dropdown to fit Radiology clearly */
+    max-height: 250px; /* Shorter height, with scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    left: 50%; /* Center dropdown under button */
+    transform: translateX(-50%); /* Adjust for centering */
+    top: 100%; /* Position below button */
+}
+
+.services-dropdown a {
+    color: #FFFFFF; /* text-sd-white */
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    transition-property: background-color;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* transition */
+}
+
+.services-dropdown a:hover {
+    background-color: #F58220; /* hover:bg-sd-secondary */
+}
+
+.services-dropdown a i,
+.services-dropdown a img {
+    margin-right: 0.5rem; /* mr-2 */
+    width: 1.25rem; /* w-5 */
+    height: 1.25rem; /* h-5 */
+    object-fit: contain;
+}
+
+/* Mobile dropdown specific adjustments */
+#mobile-services-dropdown {
+    width: 100%;
+    background-color: #00A79D; /* sd-primary */
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+    max-height: 250px; /* Shorter height for mobile dropdown */
+    overflow-y: auto; /* Enable vertical scrolling for mobile */
+}
+
+#mobile-services-dropdown a {
+    color: #FFFFFF; /* text-sd-white */
+    padding: 0.75rem 1rem; /* py-2 px-4 */
+    justify-content: center;
+    font-weight: 500; /* font-medium */
+    transition-property: all;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* transition duration-300 */
+    width: 100%; /* w-full */
+    text-align: center; /* text-center */
+    display: flex;
+    align-items: center;
+}
+
+#mobile-services-dropdown a:hover {
+    background-color: #F58220; /* hover:bg-sd-secondary */
+}
+
+
+/* General Link Hover Effect for Nav */
+nav a:hover {
+    color: #00A79D; /* sd-primary */
+}
+
+/* Ensure Lucide icons are styled correctly */
+i[data-lucide] {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Responsive adjustments for the header */
+@media (max-width: 767px) {
+    .header .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .header nav {
+        width: 100%;
+    }
+    .header nav a {
+        text-align: center;
+        width: 100%;
+        padding: 10px 0;
+    }
+}
+
+/* Gallery Specific Styles (copied from previous style.css, adapted colors) */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+.gallery-item img,
+.gallery-item iframe {
+    width: 100%;
+    height: 200px; /* Fixed height for thumbnails */
+    object-fit: cover;
+    display: block;
+    border-radius: 0.75rem; /* rounded-xl */
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 167, 157, 0.7); /* sd-primary with opacity */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 0.75rem; /* rounded-xl */
+    padding: 1rem; /* Added padding for text */
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-overlay h3 {
+    font-weight: 600; /* font-semibold */
+    font-size: 1.25rem; /* text-xl */
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.gallery-overlay p {
+    font-size: 0.875rem; /* text-sm */
+    text-align: center;
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.lightbox-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-content {
+    position: relative;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+.lightbox-content img,
+.lightbox-content iframe {
+    max-width: 100%;
+    max-height: 70vh;
+    height: auto;
+    display: block;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+}
+
+.lightbox-content iframe {
+    width: 80vw;
+    height: 45vw;
+    max-height: 70vh;
+}
+
+@media (min-width: 768px) {
+    .lightbox-content iframe {
+        width: 60vw;
+        height: 33.75vw;
+    }
+}
+
+@media (min-width: 1024px) {
+    .lightbox-content iframe {
+        width: 50vw;
+        height: 28.125vw;
+    }
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: #F58220; /* sd-secondary */
+    cursor: pointer;
+    z-index: 1001;
+    transition: color 0.2s;
+}
+
+.lightbox-close:hover {
+    color: #FF9800; /* A slightly lighter orange for hover */
+}
+
+.lightbox-nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 167, 157, 0.7); /* sd-primary with opacity */
+    color: white;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background 0.2s;
+    z-index: 1000;
+}
+
+.lightbox-nav-button:hover {
+    background: #008F85; /* darker sd-primary */
+}
+
+.lightbox-prev {
+    left: 1rem;
+}
+
+.lightbox-next {
+    right: 1rem;
+}
+
+/* Tabs Styling */
+.tab-button {
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.tab-button.active {
+    background-color: #00A79D; /* sd-primary */
+    color: white;
+    border-color: #00A79D;
+}
+
+.tab-button:not(.active):hover {
+    background-color: #E0F7F6; /* sd-light-bg */
+    color: #00A79D; /* sd-primary */
+    border-color: #00A79D;
+}
+
+/* Social Media Link Styling */
+.social-media-link-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    text-align: center;
+    color: #00A79D; /* sd-primary */
+    text-decoration: none;
+}
+
+.social-media-link-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.social-media-link-card i {
+    margin-bottom: 0.75rem;
+    width: 3rem; /* Larger icon size */
+    height: 3rem;
+    color: #00A79D; /* sd-primary */
+}
+.social-media-link-card .lucide {
+    stroke-width: 1.5; /* Make icons slightly bolder */
+}
+
+/* Values Section Flip Card Styles */
+.value-card-container {
+    perspective: 1000px; /* Establishes the 3D context for the flip */
+    height: 280px; /* Adjusted height for consistency and content */
+}
+
+.value-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d; /* Ensures 3D transformations apply to children */
+    transition: transform 0.6s; /* Smooth flip animation */
+    cursor: pointer;
+}
+
+/* Change from .flipped to :hover for the flip effect */
+.value-card-container:hover .value-card {
+    transform: rotateY(180deg);
+}
+
+.value-card-front,
+.value-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hides the back of the element when facing away */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.value-card-front {
+    background-color: #00A79D; /* sd-primary */
+    color: #FFFFFF; /* sd-white */
+    z-index: 2;
+}
+
+.value-card-back {
+    background-color: #F58220; /* sd-secondary (orange) */
+    color: #FFFFFF; /* text-sd-white for better contrast on orange */
+    transform: rotateY(180deg); /* Initially hidden, rotated to back */
+    z-index: 1; /* Ensure it's behind the front initially */
+}
+
+.value-card-back ul {
+    list-style-type: disc;
+    padding-left: 1.5rem; /* Indent list items */
+    text-align: left; /* Align list items to left */
+    width: 100%;
+    max-width: 250px; /* Constrain width for readability */
+    margin: 0 auto;
+}
+
+.value-card-back ul li {
+    margin-bottom: 0.5rem;
+}
+
+/* Testimonials Animation Styles */
+.testimonial-card {
+    opacity: 0; /* Initially hidden */
+    transform: translateX(-100%); /* Start off-screen to the left */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition */
+}
+
+.testimonial-card:nth-child(even) { /* Apply to even-numbered cards */
+    transform: translateX(100%); /* Start off-screen to the right */
+}
+
+.testimonial-card.animate-slide-in-left {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.testimonial-card.animate-slide-in-right {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Insurance Policies Logos Styles */
+.insurance-logo {
+    /* Removed grayscale filter and opacity */
+    transition: all 0.3s ease-in-out;
+    height: 6rem; /* Increased height from h-16 (4rem) to h-24 (6rem) */
+    width: auto; /* Maintain aspect ratio */
+    margin-left: 2rem; /* mx-8 in HTML means 2rem left and right */
+    margin-right: 2rem;
+}
+
+.insurance-logo:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Marquee animation for insurance logos */
+.animate-marquee {
+    animation: scrollLeft 30s linear infinite; /* Apply the animation */
+}
+
+/* Pause animation on hover for the entire scrolling container */
+.animate-marquee:hover {
+    animation-play-state: paused;
+}

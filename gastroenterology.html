@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gastroenterology - Sri Dwarakamayee Hospitals</title>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/dwarakamayihospitallogo.JPG" type="image/jpeg">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN (for dynamic icon loading) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Tailwind Configuration for new colors and animations -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sd-primary': '#00A79D',
+                        'sd-secondary': '#F58220',
+                        'sd-light-bg': '#E0F7F6',
+                        'sd-dark-text': '#34495E',
+                        'sd-light-text': '#6B7280',
+                        'sd-white': '#FFFFFF',
+                    },
+                    keyframes: {
+                        fadeInUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        pulseEffect: { '0%, 100%': { transform: 'scale(1)', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }, '50%': { transform: 'scale(1.02)', boxShadow: '0 8px 12px rgba(0, 0, 0, 0.2)' } },
+                        slideInLeft: { '0%': { opacity: '0', transform: 'translateX(-100%)' }, '100%': { opacity: '1', transform: 'translateX(0)' } },
+                        slideInRight: { '0%': { opacity: '0', transform: 'translateX(100%)' }, '100%': { opacity: '1', transform: 'translateX(0)' } },
+                        scrollLeft: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'pulse-button': 'pulseEffect 2s infinite ease-in-out',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
+                        'slide-in-right': 'slideInRight 0.8s ease-out forwards',
+                        'marquee': 'scrollLeft 30s linear infinite'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-['Inter'] antialiased text-sd-dark-text bg-gray-50" data-current-service="Gastroenterology">
+    <!-- Header Section -->
+    <header class="bg-sd-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="assets/images/dwarakamayihospitallogo.JPG" alt="Sri Dwarakamayee Hospitals Logo" class="h-20 w-auto md:h-24">
+            </a>
+
+            <!-- Navigation - Desktop -->
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="index.html#home" class="text-sd-light-text hover:text-sd-primary text-lg font-medium transition duration-300">Home</a>
+                <a href="about-us.html" class="text-sd-light-text hover:text-sd-primary text-lg font-medium transition duration-300">About Us</a>
+                
+                <!-- Services Dropdown -->
+                <div class="relative group">
+                    <button class="text-sd-light-text hover:text-sd-primary text-lg font-medium transition duration-300 flex items-center focus:outline-none">
+                        Services <i data-lucide="chevron-down" class="ml-1 w-4 h-4 transition-transform duration-300 group-hover:rotate-180"></i>
+                    </button>
+                    <div class="absolute hidden group-hover:block bg-sd-primary shadow-lg rounded-md py-2 z-40 services-dropdown">
+                        <!-- Services will be dynamically loaded here by JavaScript -->
+                    </div>
+                </div>
+
+                <a href="index.html#doctors" class="text-sd-light-text hover:text-sd-primary text-lg font-medium transition duration-300">Doctors</a>
+                <a href="gallery.html" class="text-sd-light-text hover:text-sd-primary text-lg font-medium transition duration-300">Gallery</a>
+                <!-- Book Appointment Button - Desktop -->
+                <a
+                    href="index.html#appointments"
+                    class="inline-flex items-center px-4 py-2 bg-sd-secondary text-sd-white font-bold rounded-full shadow-md hover:bg-orange-600 transition duration-300 animate-pulse-button text-lg"
+                >
+                    Book Appointment <i data-lucide="calendar-days" class="ml-2 w-5 h-5"></i>
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-sd-light-text hover:text-sd-primary focus:outline-none">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="md:hidden bg-sd-primary shadow-lg pb-4 hidden">
+            <nav class="flex flex-col items-center space-y-4 pt-4">
+                <a href="index.html#home" class="mobile-nav-link text-sd-white hover:bg-sd-secondary text-lg font-medium transition duration-300 w-full text-center py-2">Home</a>
+                <a href="about-us.html" class="mobile-nav-link text-sd-white hover:bg-sd-secondary text-lg font-medium transition duration-300 w-full text-center py-2">About Us</a>
+                
+                <!-- Mobile Services Dropdown Toggle -->
+                <button id="mobile-services-dropdown-toggle" class="text-sd-white hover:bg-sd-secondary text-lg font-medium transition duration-300 w-full text-center py-2 flex items-center justify-center">
+                    Services <i data-lucide="chevron-down" class="ml-1 w-4 h-4 transition-transform duration-300 mobile-dropdown-icon"></i>
+                </button>
+                <div id="mobile-services-dropdown" class="hidden">
+                    <!-- Services will be dynamically loaded here by JavaScript -->
+                </div>
+
+                <a href="index.html#doctors" class="mobile-nav-link text-sd-white hover:bg-sd-secondary text-lg font-medium transition duration-300 w-full text-center py-2">Doctors</a>
+                <a href="gallery.html" class="mobile-nav-link text-sd-white hover:bg-sd-secondary text-lg font-medium transition duration-300 w-full text-center py-2">Gallery</a>
+                <!-- Book Appointment Button - Mobile -->
+                <a
+                    href="index.html#appointments"
+                    class="mobile-nav-link inline-flex items-center px-4 py-2 bg-sd-secondary text-sd-white font-bold rounded-full shadow-md hover:bg-orange-600 transition duration-300 w-full justify-center animate-pulse-button text-lg"
+                >
+                    Book Appointment <i data-lucide="calendar-days" class="ml-2 w-5 h-5"></i>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="min-h-screen">
+        <!-- Hero Section for Service Page -->
+        <section class="relative bg-gradient-to-r from-sd-primary to-sd-dark-text text-sd-white py-24 md:py-40 overflow-hidden rounded-b-xl shadow-lg flex items-center justify-center text-center min-h-[300px] md:min-h-[450px]" style="background-image: url('assets/images/gas.JPG'); background-size: cover; background-position: center;">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="container mx-auto px-4 relative z-10">
+                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4 animate-fade-in-up" id="service-title-hero">Gastroenterology</h1>
+                <p class="text-lg md:text-xl opacity-90 animate-fade-in-up delay-200" id="service-tagline-hero">Expert care for digestive system disorders and liver health.</p>
+            </div>
+        </section>
+
+        <!-- Service Detail Section -->
+        <section class="py-16 md:py-24 bg-sd-white">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <h2 class="text-3xl md:text-4xl font-bold text-sd-primary mb-8 text-center" id="service-detail-heading">Understanding Our Gastroenterology Department</h2>
+                <div class="prose prose-lg mx-auto text-sd-dark-text">
+                    <p class="text-xl">
+                        Gastroenterology is a specialized branch of medicine focusing on the digestive system and its disorders. This field deals with the diagnosis and treatment of conditions affecting the gastrointestinal tract, which includes the esophagus, stomach, intestines, liver, pancreas, and gallbladder. Gastroenterologists are experts in managing issues like acid reflux, ulcers, irritable bowel syndrome (IBS), Crohn’s disease, and hepatitis, among others.
+                    </p>
+                    <p class="text-xl">
+                        They use advanced techniques such as endoscopy and colonoscopy to examine and treat these areas. Whether it’s a routine check-up or complex surgical procedures, gastroenterology plays a crucial role in maintaining digestive health, ensuring that patients receive comprehensive care tailored to their specific needs. Regular consultations with a gastroenterologist can help in early detection and prevention of serious gastrointestinal diseases. You can speak with a <strong class="text-sd-secondary">gastroenterologist in Karimnagar</strong> at <strong id="hospital-name-intro">Sri Dwarakamayee Hospitals</strong>.
+                    </p>
+                    
+                    <h3 class="text-3xl font-semibold text-sd-dark-text mt-8 mb-4">Medical Gastroenterology</h3>
+                    <p class="text-xl">
+                        Our medical gastroenterology team comprises highly qualified doctors, technicians, and nursing staff. The team uses a multi-disciplinary approach and works in collaboration with other consultants and specialities such as surgery, radiology, and pathology. This ensures a better diagnosis of medical conditions. The department offers a comprehensive range of clinics – IBD clinic, liver clinic, pancreatic clinic, and bariatric clinic to ensure the best gastroenterology treatment.
+                    </p>
+
+                    <h3 class="text-3xl font-semibold text-sd-dark-text mt-8 mb-4">Gastroenterology Treatment We Provide:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-xl">
+                        <li>Chronic Liver Disease</li>
+                        <li>Hepatitis B, C, E, A</li>
+                        <li>Gastrointestinal Bleeding</li>
+                        <li>Ascites</li>
+                        <li>Diarrhea, IBD, IBS</li>
+                        <li>Gallstones, Bile Duct Stones</li>
+                        <li>Cancers of Gallbladder and Bile Duct</li>
+                        <li>Pancreatitis, Pancreatic Stones, Pseudocyst</li>
+                        <li>Dysphagia, Cancers, Achalasia Cardia</li>
+                        <li>GERD, Dyspepsia, Heartburn</li>
+                        <li>Gas and Constipation</li>
+                        <li>Ulcer, Varices, Piles</li>
+                        <li>Anemia, Vitamin B12 & Iron Deficiency</li>
+                        <li>Unexplained Weight loss, Fever</li>
+                        <li>Oral Ulcers</li>
+                    </ul>
+
+                    <h3 class="text-3xl font-semibold text-sd-dark-text mt-8 mb-4">Hepatology</h3>
+                    <p class="text-xl">
+                        The Department of Gastroenterology and Hepatology at <strong id="hospital-name-why-choose">Sri Dwarakamayee Hospitals</strong> was established with an aim to provide comprehensive and affordable Gastro and Hepatology care to the surrounding population in Karimnagar. Gastroenterology and Hepatology are rapidly changing fields with technological advances allowing complex procedures to be done in a minimally invasive manner with no or minimal period of hospitalization. The department is manned by a qualified and experienced team of Gastroenterologists and Hepatologists who provide round-the-clock services at Sri Dwarakamayee Hospitals. The team of doctors at Sri Dwarakamayee Hospitals are experts in providing a whole range of routine as well as advanced procedures.
+                    </p>
+
+                    <h3 class="text-3xl font-semibold text-sd-dark-text mt-8 mb-4">Advanced Procedures:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-xl">
+                        <li>
+                            <strong class="text-sd-secondary">Double Balloon Enteroscopy:</strong> The Double Balloon Enteroscopy has allowed visualization of deeper parts of the small intestine and to intervene/treat illnesses and lesions which earlier needed surgeries. Intestinal ulcers can be biopsied, strictures dilated, and bleeding lesions tackled with a DBE. Sri Dwarakamayee Hospitals is one of the prime centers performing Double Balloon Enteroscopy in Karimnagar.
+                        </li>
+                        <li>
+                            <strong class="text-sd-secondary">Capsule Endoscopy:</strong> Capsule endoscopy is a small battery-driven camera that is to be ingested and records the entire gastrointestinal tract to be visualized later on a computer. This is a painless way to visualize the entire gastrointestinal tract and help to achieve diagnosis/direct treatment in people with anemia/black stools of unknown origin, unclassified abdominal pain, and malabsorption syndromes.
+                        </li>
+                        <li>
+                            <strong class="text-sd-secondary">Endoscopic Ultrasound:</strong> Endoscopic ultrasound helps us to visualize structures in and beyond the intestinal walls. It helps in the accurate diagnosis and staging of gastrointestinal tumors, CBD stones, pancreatitis as well as helps us in decompressing the bile duct/pseudocyst and providing pain relief in pancreatitis via celiac plexus neurolysis.
+                        </li>
+                        <li>
+                            <strong class="text-sd-secondary">Spy Cholangioscopy:</strong> Large-sized bile duct stones were earlier subjected to surgical treatment. Nowadays moderate-sized stones can be removed after large balloon sphincteroplasty where the papillary opening is dilated with a balloon and large stones can be removed after breaking them with a laser through a spy cholangioscopy. Spy Cholangioscopy is a special type of endoscope which can be passed into the bile duct to visualize the stones and tumors within as well as break large bile duct stones with the help of laser. This has made management of complex bile strictures (narrowing) and large bile stones easy and safe. Spy Cholangioscopy can help plan surgery better or avoid it altogether.
+                        </li>
+                        <li>
+                            <strong class="text-sd-secondary">Manometry & pHmetry:</strong> Manometry helps to record muscle contractions and sequential coordinated muscle activity involved in the act of swallowing and passing motion. This aids in classifying disorders of swallowing as well as constipation so that directed therapy can be applied. This is combined with 24-hour pHmetry – where a continuous record of the lower esophageal pH measurements are taken in people with difficult acidity/GERD. These investigations help us select patients who would respond best to anti-reflux surgery.
+                        </li>
+                        <li>
+                            <strong class="text-sd-secondary">Third Space Endoscopy:</strong> Third space endoscopy is the newest advancement in endoscopy and allows us to remove lesions which were previously considered surgical indications. It is used to treat tumors within the wall of the gastrointestinal tract as well as a motility disorder called achalasia cardia. Large polyps can also be removed endoscopically without the fear of bleeding or perforation (hole) by applying clips or a loop to the base of the polyps. A wide variety of foreign bodies are routinely and safely removed at Sri Dwarakamayee with the help of special hoods and baskets. Bleeding ulcers and varices are routinely managed with clips, bands, and thermal coagulation. Argon plasma photocoagulation is applied to control bleeding from abnormal blood vessels and after radiotherapy. Obstruction because of tumors and narrowings is routinely managed with balloon dilation and stents as appropriate. The Department of Gastroenterology & Hepatology is run by a qualified team of Gastrointestinal surgeons, hepatobiliary and transplant surgeons, oncologists, oncosurgeons, and interventional radiologists, who are experienced in handling complex cases.
+                        </li>
+                    </ul>
+
+                    <h3 class="text-3xl font-semibold text-sd-dark-text mt-8 mb-4">Innovative Treatments:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-xl">
+                        <li>Advanced Laparoscopic Surgery</li>
+                        <li>Bariatric Surgery and Oncosurgery</li>
+                        <li>Single Incision Laparoscopic Surgery</li>
+                        <li>Latest Laparoscopic Equipment</li>
+                        <li>Excellent Post-operative care and Follow-up</li>
+                    </ul>
+
+                    <h3 class="text-3xl font-semibold text-sd-dark-text mt-8 mb-4">We Specialize in:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-xl">
+                        <li>Obesity Surgery</li>
+                        <li>Cancer Surgery (Hepatobiliary, Pancreatic, and Colorectal)</li>
+                        <li>Advanced Laparoscopic Surgery</li>
+                        <li>Laparoscopic Cholecystectomy</li>
+                        <li>Appendectomy</li>
+                        <li>Hernia Surgery</li>
+                    </ul>
+
+                    <h3 class="text-3xl font-semibold text-sd-dark-text mt-8 mb-4">Bariatric Endoscopy and Nutrition</h3>
+                    <p class="text-xl">
+                        At Sri Dwarakamayee, we have a team of qualified doctors looking at reversible causes for obesity like endocrine disorders, depression, eating disorders, medications, and acid peptic disease. Our Gastroenterologists, dieticians, and physiotherapists analyze your daily routine and food consumption and come up with plans for you to stay healthy.
+                    </p>
+
+                    <h3 class="text-3xl font-semibold text-sd-dark-text mt-8 mb-4">Innovative Treatments for Obesity:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-xl">
+                        <li>Intragastric Balloon Placement – Non-invasive surgeries</li>
+                        <li>The Duodenal-Jejunal Bypass Sleeve (EndoBarrier Gastrointestinal Liner)</li>
+                    </ul>
+
+                    <h3 class="text-3xl font-semibold text-sd-dark-text mt-8 mb-4">We Specialize in the Treatment of:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-xl">
+                        <li>Obesity-related comorbidities – Endocrine disorders – eating disorders</li>
+                        <li>Acid Peptic disease – Bariatric Endoscopy to assist weight-loss</li>
+                    </ul>
+
+                    <h3 class="text-3xl font-semibold text-sd-dark-text mt-8 mb-4">Surgical Gastroenterology</h3>
+                    <p class="text-xl">
+                        The Surgical Gastroenterology department at <strong class="text-sd-secondary">Sri Dwarakamayee Hospitals</strong> consists of a team of highly skilled surgeons who specialize in the latest surgical techniques and clinical practices. They are proficient in addressing a wide range of upper GI symptoms, such as those caused by gastroesophageal reflux disease (GERD), as well as issues related to the gallbladder, pancreas, and small bowel. Additionally, the department is well-equipped to evaluate and treat lower GI symptoms, including constipation, tumors, infectious diseases, trauma, and more.
+                    </p>
+
+                    <h3 class="text-3xl font-semibold text-sd-dark-text mt-8 mb-4">Other Treatments:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-xl">
+                        <li><strong class="text-sd-secondary">Piles:</strong> Inflamed blood vessels in or around the anus and rectum are called piles. They are very common and usually common in the elderly and pregnant women.</li>
+                        <li><strong class="text-sd-secondary">Anal Fissure:</strong> Small tear or scar in the lining of the anus is called anal fissure.</li>
+                        <li><strong class="text-sd-secondary">Fistula:</strong> A fistula is an abnormal, narrow passage or duct-like connection that forms between two organs or vessels that are lined with epithelial cells.</li>
+                        <li><strong class="text-sd-secondary">Colonic Polyps:</strong> Small growth in the lining of the colon or rectum. This growth could become cancerous at times.</li>
+                        <li><strong class="text-sd-secondary">Colorectal Cancer:</strong> Also known as bowel cancer or colon cancer developed from polyps. Symptoms of Colorectal cancer are usually pain in the abdomen and bowel changes.</li>
+                        <li><strong class="text-sd-secondary">Rectal Prolapse:</strong> Sliding of part of the wall or the wall of the rectum out of place is called rectum prolapse.</li>
+                        <li><strong class="text-sd-secondary">Diverticular Disease:</strong> Diverticular disease occurs due to the aging of muscles that make up the wall of the large intestine. An infection occurs in the tiny pockets of the large intestine. The pockets are called diverticula. These pockets bulge out through weak spots in your large intestine. The pockets can become inflamed or infected.</li>
+                        <li><strong class="text-sd-secondary">Inflammatory Bowel:</strong> Ailments that cause prolonged swelling of part or all of the digestive tract. Symptoms associated with inflammatory bowel are diarrhea, abdominal pain, blood in the stools, reduced appetite, and unintended weight loss.</li>
+                        <li><strong class="text-sd-secondary">Ulcerative Colitis:</strong> Ulcerative colitis is a common form of inflammatory bowel disease. The innermost lining of the large intestine becomes swollen, and ulcers may form on the surface.</li>
+                    </ul>
+
+                    <h3 class="text-3xl font-semibold text-sd-dark-text mt-8 mb-4">Why Choose Sri Dwarakamayee Hospitals for Gastroenterology?</h3>
+                    <p class="text-xl">
+                        The Gastroenterology Department at <strong class="text-sd-secondary">Sri Dwarakamayee Hospitals</strong> in Karimnagar specializes in the prevention, diagnosis, and treatment of digestive tract and liver disorders. This includes conditions involving the pancreas, liver, gallbladder, esophagus, stomach, small intestine, and colon. As a leading gastroenterology hospital in Karimnagar, we offer a comprehensive range of services at a tertiary level. Our department also provides a full spectrum of general and gastrointestinal surgeries, featuring some of the top gastroenterologists in the field of general and minimal access surgeries. Minimal access techniques are employed to promote faster recovery, minimize complications, and simplify post-surgical follow-ups. Sri Dwarakamayee Hospitals is recognized as a leader in laparoscopic and endoscopic surgeries. Equipped with advanced computer-assisted video navigational tools, state-of-the-art endoscopic technology, and high-precision instruments, we perform a wide array of minimal access and open surgical procedures. For anyone seeking a reliable hospital for stomach problems, Sri Dwarakamayee Hospitals is a trustworthy choice.
+                    </p>
+
+                    <h3 class="text-3xl font-semibold text-sd-dark-text mt-8 mb-4">Find the Best Gastroenterology Hospital Near You</h3>
+                    <p class="text-xl">
+                        Looking for the best gastroenterology hospital in Karimnagar? Sri Dwarakamayee Hospitals offers expert care for all digestive and stomach-related issues. Whether you’re searching for the best hospital for stomach problems near me or a trusted gastric hospital near me, our team of experienced gastroenterologists provides advanced diagnosis and treatment. With Sri Dwarakamayee Hospitals, quality digestive care is always nearby.
+                    </p>
+
+                    <div class="mt-10 text-center">
+                        <a href="index.html#appointments" class="inline-flex items-center px-8 py-4 bg-sd-secondary text-sd-white font-bold text-lg rounded-full shadow-lg hover:bg-orange-600 transition duration-300 transform hover:scale-105 animate-pulse-button">
+                            Book an Appointment for Gastroenterology <i data-lucide="calendar-days" class="ml-3 w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other Services Section (Now with Scroller) -->
+        <section class="py-16 md:py-24 bg-sd-light-bg">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center text-sd-dark-text mb-12">Explore Our Other Services</h2>
+                <div class="relative">
+                    <div class="flex overflow-x-scroll scrollbar-hide space-x-6 py-4 px-2" id="other-services-grid">
+                        <!-- Other services will be dynamically loaded here by JavaScript -->
+                    </div>
+                    <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-sd-primary p-2 rounded-full text-sd-white hover:bg-teal-700 transition z-20" id="prev-other-service">
+                        <i data-lucide="chevron-left" class="w-8 h-8"></i>
+                    </button>
+                    <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-sd-primary p-2 rounded-full text-sd-white hover:bg-teal-700 transition z-20" id="next-other-service">
+                        <i data-lucide="chevron-right" class="w-8 h-8"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-sd-dark-text text-sd-white py-12 md:py-16">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Contact Info -->
+            <div>
+                <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
+                <p class="mb-2 flex items-center"><i data-lucide="map-pin" class="mr-2 w-5 h-5"></i> H.No: 2-9-106/1, Vasavi Colony, Karimnagar - 505001</p>
+                <p class="mb-2 flex items-center"><i data-lucide="phone" class="mr-2 w-5 h-5"></i> +91 85019 99920</p>
+                <p class="mb-2 flex items-center"><i data-lucide="phone" class="mr-2 w-5 h-5"></i> +91 85019 99940</p>
+                <p class="mb-2 flex items-center"><i data-lucide="phone" class="mr-2 w-5 h-5"></i> +91 85019 99960</p>
+                <p class="mb-2 flex items-center"><i data-lucide="mail" class="mr-2 w-5 h-5"></i> info@sridwarakamayee.com</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="index.html#home" class="hover:text-sd-primary transition duration-300">Home</a></li>
+                    <li><a href="about-us.html" class="hover:text-sd-primary transition duration-300">About Us</a></li>
+                    <li><a href="index.html#services" class="hover:text-sd-primary transition duration-300">Services</a></li>
+                    <li><a href="index.html#doctors" class="hover:text-sd-primary transition duration-300">Doctors</a></li>
+                    <li><a href="gallery.html" class="hover:text-sd-primary transition duration-300">Gallery</a></li>
+                    <li><a href="index.html#appointments" class="hover:text-sd-primary transition duration-300">Book Appointment</a></li>
+                </ul>
+            </div>
+
+            <!-- Social Media & Newsletter (Optional) -->
+            <div>
+                <h3 class="text-2xl font-bold mb-4">Connect With Us</h3>
+                <div class="flex space-x-4 mb-6">
+                    <a href="#" class="text-sd-white hover:text-sd-primary transition duration-300"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                    <a href="#" class="text-sd-white hover:text-sd-primary transition duration-300"><i data-lucide="twitter" class="w-6 h-6"></i></a>
+                    <a href="#" class="text-sd-white hover:text-sd-primary transition duration-300"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                    <a href="#" class="text-sd-white hover:text-sd-primary transition duration-300"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                </div>
+                <p class="text-lg">Stay updated with our latest news and health tips!</p>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-6 text-center text-sm opacity-80">
+            &copy; <span id="current-year-sd"></span> Sri Dwarakamayee Hospitals. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button - FIXED POSITIONING APPLIED -->
+    <a href="https://wa.me/918501999920" target="_blank" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 bg-green-500 rounded-full p-3 shadow-lg hover:scale-110 transition-transform duration-300 z-50 flex items-center justify-center" aria-label="Chat on WhatsApp">
+        <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp" class="w-10 h-10 md:w-12 md:h-12">
+    </a>
+
+    <!-- Custom JavaScript -->
+    <script src="assets/js/script.js"></script>
+    <script>
+        // This script runs on a service page to dynamically populate content
+        document.addEventListener('DOMContentLoaded', () => {
+            const serviceName = document.body.dataset.currentService;
+            if (serviceName) {
+                // Update page title
+                document.title = `${serviceName} - Sri Dwarakamayee Hospitals`;
+
+                // Update hero section
+                const serviceTitleHero = document.getElementById('service-title-hero');
+                if (serviceTitleHero) serviceTitleHero.textContent = serviceName;
+
+                // Update detail section headings/intros
+                const serviceDetailHeading = document.getElementById('service-detail-heading');
+                if (serviceDetailHeading) serviceDetailHeading.textContent = `Understanding Our ${serviceName} Department`;
+                
+                const hospitalNameIntro = document.getElementById('hospital-name-intro');
+                if (hospitalNameIntro) hospitalNameIntro.textContent = 'Sri Dwarakamayee Hospitals';
+
+                const hospitalNameWhyChoose = document.getElementById('hospital-name-why-choose');
+                if (hospitalNameWhyChoose) hospitalNameWhyChoose.textContent = 'Sri Dwarakamayee Hospitals\'';
+
+                // The renderOtherServicesSection() function in sri-dwarakamayee-script.js
+                // will automatically populate the #other-services-grid based on data-current-service
+            }
+        });
+    </script>
+</body>
+</html>

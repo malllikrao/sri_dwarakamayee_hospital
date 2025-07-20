@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Dr. P. Vamshi Krishna - Sri Dwarakamaye Hospitals</title>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/dwarakamayihospitallogo.JPG" type="image/jpeg">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS -->
+    <!-- Assuming assets/css/sri-dwarakamaye-style.css exists and contains relevant styles -->
+    <link rel="stylesheet" href="assets/css/style.css"> <!-- Changed to style.css for consistency -->
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN (for dynamic icon loading) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Tailwind Configuration for new colors and animations -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Sri Dwarakamaye Custom Colors derived from logo and common medical palettes
+                        'sd-primary': '#00A79D', /* Teal/Blue-Green from logo */
+                        'sd-secondary': '#F58220', /* Orange from logo */
+                        'sd-light-bg': '#E0F7F6', /* Light Teal/Green for backgrounds */
+                        'sd-dark-text': '#34495E', /* Dark Blue-Gray for text and footer */
+                        'sd-light-text': '#6B7280', /* Lighter gray for secondary text */
+                        'sd-white': '#FFFFFF',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        pulseEffect: { // Animation for the button
+                            '0%, 100%': { transform: 'scale(1)', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' },
+                            '50%': { transform: 'scale(1.02)', boxShadow: '0 8px 12px rgba(0, 0, 0, 0.2)' },
+                        },
+                        flipIn: {
+                            '0%': { transform: 'rotateY(90deg)', opacity: '0' },
+                            '100%': { transform: 'rotateY(0deg)', opacity: '1' },
+                        },
+                        flipOut: {
+                            '0%': { transform: 'rotateY(0deg)', opacity: '1' },
+                            '100%': { transform: 'rotateY(90deg)', opacity: '0' },
+                        },
+                        slideInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-100%)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        slideInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(100%)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        scrollLeft: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'pulse-button': 'pulseEffect 2s infinite ease-in-out',
+                        'flip-in': 'flipIn 0.6s ease-out forwards',
+                        'flip-out': 'flipOut 0.6s ease-out forwards',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
+                        'slide-in-right': 'slideInRight 0.8s ease-out forwards',
+                        'marquee': 'scrollLeft 30s linear infinite'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-['Inter'] antialiased text-sd-dark-text bg-gray-50">
+
+    <!-- Header Section (Copied from index.html) -->
+    <header class="bg-sd-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="assets/images/dwarakamayihospitallogo.JPG" alt="Sri Dwarakamaye Hospitals Logo" class="h-20 w-auto md:h-24">
+            </a>
+
+            <!-- Navigation - Desktop -->
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="index.html#home" class="text-sd-light-text hover:text-sd-primary text-lg font-medium transition duration-300">Home</a>
+                <a href="about-us.html" class="text-sd-primary text-lg font-bold transition duration-300">About Us</a> <!-- Active link -->
+                
+                <!-- Services Dropdown -->
+                <div class="relative group">
+                    <button class="text-sd-light-text hover:text-sd-primary text-lg font-medium transition duration-300 flex items-center focus:outline-none">
+                        Services <i data-lucide="chevron-down" class="ml-1 w-4 h-4 transition-transform duration-300 group-hover:rotate-180"></i>
+                    </button>
+                    <div class="absolute hidden group-hover:block bg-sd-primary shadow-lg rounded-md py-2 z-40 services-dropdown">
+                        <!-- Services will be dynamically loaded here by JavaScript -->
+                    </div>
+                </div>
+
+                <a href="index.html#doctors" class="text-sd-light-text hover:text-sd-primary text-lg font-medium transition duration-300">Doctors</a>
+                <a href="gallery.html" class="text-sd-light-text hover:text-sd-primary text-lg font-medium transition duration-300">Gallery</a>
+                <!-- Book Appointment Button - Desktop -->
+                <a
+                    href="index.html#appointments"
+                    class="inline-flex items-center px-4 py-2 bg-sd-secondary text-sd-white font-bold rounded-full shadow-md hover:bg-orange-600 transition duration-300 animate-pulse-button text-lg"
+                >
+                    Book Appointment <i data-lucide="calendar-days" class="ml-2 w-5 h-5"></i>
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-sd-light-text hover:text-sd-primary focus:outline-none">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="md:hidden bg-sd-primary shadow-lg pb-4 hidden">
+            <nav class="flex flex-col items-center space-y-4 pt-4">
+                <a href="index.html#home" class="mobile-nav-link text-sd-white hover:bg-sd-secondary text-lg font-medium transition duration-300 w-full text-center py-2">Home</a>
+                <a href="about-us.html" class="mobile-nav-link text-sd-white hover:bg-sd-secondary text-lg font-bold transition duration-300 w-full text-center py-2">About Us</a> <!-- Active link -->
+                
+                <!-- Mobile Services Dropdown Toggle -->
+                <button id="mobile-services-dropdown-toggle" class="text-sd-white hover:bg-sd-secondary text-lg font-medium transition duration-300 w-full text-center py-2 flex items-center justify-center">
+                    Services <i data-lucide="chevron-down" class="ml-1 w-4 h-4 transition-transform duration-300 mobile-dropdown-icon"></i>
+                </button>
+                <div id="mobile-services-dropdown" class="hidden">
+                    <!-- Services will be dynamically loaded here by JavaScript -->
+                </div>
+
+                <a href="index.html#doctors" class="mobile-nav-link text-sd-white hover:bg-sd-secondary text-lg font-medium transition duration-300 w-full text-center py-2">Doctors</a>
+                <a href="gallery.html" class="mobile-nav-link text-sd-white hover:bg-sd-secondary text-lg font-medium transition duration-300 w-full text-center py-2">Gallery</a>
+                <!-- Book Appointment Button - Mobile -->
+                <a
+                    href="index.html#appointments"
+                    class="mobile-nav-link inline-flex items-center px-4 py-2 bg-sd-secondary text-sd-white font-bold rounded-full shadow-md hover:bg-orange-600 transition duration-300 w-full justify-center animate-pulse-button text-lg"
+                >
+                    Book Appointment <i data-lucide="calendar-days" class="ml-2 w-5 h-5"></i>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="min-h-screen flex items-center justify-center py-16 md:py-24 bg-sd-light-bg">
+        <!-- Section: About Dr. P. Vamshi Krishna MD -->
+        <section id="about-director" class="container mx-auto px-4 max-w-5xl bg-sd-white rounded-3xl shadow-xl p-8 md:p-12">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-center text-sd-dark-text mb-12 leading-tight">
+                Meet Our Director: <span class="text-sd-primary">Dr. P. Vamshi Krishna</span>
+            </h2>
+            <div class="flex flex-col md:flex-row items-center justify-center md:space-x-12">
+                <div class="md:w-1/3 flex justify-center mb-8 md:mb-0">
+                    <!-- Increased image size: w-72 h-72 md:w-96 md:h-96 -->
+                    <img src="assets/images/WhatsApp Image 2025-07-16 at 1.58.10 AM (2).jpeg" alt="Dr. P. Vamshi Krishna" class="rounded-3xl shadow-lg w-72 h-72 md:w-96 md:h-96 object-cover object-center border-4 border-sd-primary transition duration-300 hover:scale-105">
+                </div>
+                <div class="md:w-2/3 text-center md:text-left">
+                    <h3 class="text-3xl font-bold text-sd-primary mb-4">Dr. P. Vamshi Krishna, M.D. (General Medicine)</h3>
+                    <p class="text-xl text-sd-secondary font-semibold mb-6">General Physician (Director & Main Doctor)</p>
+                    <p class="text-lg text-sd-dark-text leading-relaxed mb-4">
+                        Dr. P. Vamshi Krishna is the visionary Director and a leading General Physician at Sri Dwarakamaye Hospitals. With extensive experience and a deep understanding of patient needs, Dr. Vamshi Krishna is at the forefront of our commitment to delivering exceptional healthcare. His leadership ensures that the hospital operates with the highest standards of medical excellence and ethical practice.
+                    </p>
+                    <p class="text-lg text-sd-dark-text leading-relaxed mb-4">
+                        His expertise as an <span class="font-bold">MD in General Medicine</span> allows him to provide comprehensive primary care, focusing on accurate diagnosis, effective treatment, and preventive health strategies. Dr. Vamshi Krishna has <span class="font-bold">over 10+ years of experience in treating</span> a wide range of medical conditions, ensuring top-notch care for all patients. His patient-first philosophy is the cornerstone of Sri Dwarakamaye Hospitals, inspiring the entire team to offer empathetic and holistic care.
+                    </p>
+                    <p class="text-lg text-sd-dark-text leading-relaxed">
+                        Under his guidance, Sri Dwarakamaye Hospitals continues to innovate and expand its services, always with the goal of improving patient outcomes and contributing significantly to the health and well-being of the Karimnagar community.
+                    </p>
+                    <div class="mt-8 flex justify-center md:justify-start">
+                        <a href="index.html#appointments" class="inline-flex items-center px-6 py-3 bg-sd-secondary text-sd-white font-bold rounded-full shadow-lg hover:bg-orange-600 transition duration-300 transform hover:-translate-y-1 animate-pulse-button text-lg">
+                            Book an Appointment with Dr. Vamshi <i data-lucide="calendar-days" class="ml-2 w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section (Copied from index.html) -->
+    <footer class="bg-sd-dark-text text-sd-white py-12">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- About Us -->
+            <div>
+                <a href="index.html" class="flex items-center space-x-2 mb-4">
+                    <img src="assets/images/dwarakamayihospitallogo.JPG" alt="Sri Dwarakamaye Hospitals Logo" class="h-16 w-auto">
+                </a>
+                <p class="text-gray-400 leading-relaxed">
+                    Sri Dwarakamaye Hospitals: A new era in multispeciality healthcare, committed to your well-being with advanced medical services and compassionate care.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="index.html#home" class="text-gray-400 hover:text-sd-secondary transition duration-300">Home</a></li>
+                    <li><a href="about-us.html" class="text-gray-400 hover:text-sd-secondary transition duration-300">About Us</a></li>
+                    <li><a href="index.html#services" class="text-gray-400 hover:text-sd-secondary transition duration-300">Services</a></li>
+                    <li><a href="index.html#doctors" class="text-gray-400 hover:text-sd-secondary transition duration-300">Doctors</a></li>
+                    <li><a href="health-packages.html" class="text-gray-400 hover:text-sd-secondary transition duration-300">Health Packages</a></li>
+                    <li><a href="index.html#appointments" class="text-gray-400 hover:text-sd-secondary transition duration-300">Appointments</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Contact Info</h3>
+                <p class="text-gray-400 mb-2">H.No. 6-6-530, Peddapally Road, Mancherial Chowrasta, Karimnagar - 505 001</p>
+                <p class="text-gray-400 mb-2">Phone: <a href="tel:+918501999920" class="hover:underline">+91 85019 99920</a>, <a href="tel:+918501999940" class="hover:underline">+91 85019 99940</a>, <a href="tel:+918501999960" class="hover:underline">+91 85019 99960</a></p>
+                <p class="text-gray-400 mb-2">Email: <a href="mailto:sridwarakamayeehospital@gmail.com" class="hover:underline">sridwarakamayeehospital@gmail.com</a></p>
+            </div>
+
+            <!-- Social Media -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-sd-secondary transition duration-300"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-sd-secondary transition duration-300"><i data-lucide="twitter" class="w-6 h-6"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-sd-secondary transition duration-300"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-sd-secondary transition duration-300"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-sd-secondary transition duration-300"><i data-lucide="youtube" class="w-6 h-6"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 mt-8 pt-8 border-t border-gray-800">
+            &copy; <span id="current-year-sd"></span> Sri Dwarakamaye Hospitals. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button - FIXED POSITIONING APPLIED -->
+    <a href="https://wa.me/918501999920" target="_blank" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 bg-green-500 rounded-full p-3 shadow-lg hover:scale-110 transition-transform duration-300 z-50 flex items-center justify-center" aria-label="Chat on WhatsApp">
+        <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp" class="w-10 h-10 md:w-12 md:h-12">
+    </a>
+
+    <!-- Link to external JavaScript file -->
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

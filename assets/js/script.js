@@ -547,8 +547,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const statBoxes = entry.target.querySelectorAll('#why-choose-us .grid > div');
 
                     if (statBoxes[0] && statBoxes[0].querySelector('h3')) animateNumber(statBoxes[0].querySelector('h3'), 50000, 2000); // Patients Treated
-                    if (statBoxes[1] && statBoxes[1].querySelector('h3')) animateNumber(statBoxes[1].querySelector('h3'), 50, 1500); // Specialities
-                    if (statBoxes[2] && statBoxes[2].querySelector('h3')) animateNumber(statBoxes[2].querySelector('h3'), 200, 1500); // Doctors
+                    if (statBoxes[1] && statBoxes[1].querySelector('h3')) animateNumber(statBoxes[1].querySelector('h3'), 25, 1500); // Specialities
+                    if (statBoxes[2] && statBoxes[2].querySelector('h3')) animateNumber(statBoxes[2].querySelector('h3'), 20, 1500); // Doctors
 
                     hasAnimated = true;
                     observer.unobserve(entry.target);
